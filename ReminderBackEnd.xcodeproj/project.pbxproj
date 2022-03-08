@@ -8,11 +8,147 @@
 
 /* Begin PBXBuildFile section */
 		1D4EFCAB27D7271C008742D0 /* ReminderBackEnd.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D4EFCAA27D7271C008742D0 /* ReminderBackEnd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D4EFCDF27D7272E008742D0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCB327D7272E008742D0 /* Constant.swift */; };
+		1D4EFCE027D7272E008742D0 /* AddReminderDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCB427D7272E008742D0 /* AddReminderDatabaseService.swift */; };
+		1D4EFCE127D7272E008742D0 /* ReminderDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCB527D7272E008742D0 /* ReminderDatabase.swift */; };
+		1D4EFCE227D7272E008742D0 /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCB627D7272E008742D0 /* UserDatabase.swift */; };
+		1D4EFCE327D7272E008742D0 /* DeleteReminderDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCB727D7272E008742D0 /* DeleteReminderDatabaseService.swift */; };
+		1D4EFCE427D7272E008742D0 /* UpdateReminderDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCB827D7272E008742D0 /* UpdateReminderDatabaseService.swift */; };
+		1D4EFCE527D7272E008742D0 /* CreateUserDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCBA27D7272E008742D0 /* CreateUserDatabaseService.swift */; };
+		1D4EFCE627D7272E008742D0 /* GetAllUsersDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCBB27D7272E008742D0 /* GetAllUsersDatabaseService.swift */; };
+		1D4EFCE727D7272E008742D0 /* DoesUserExistsDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCBC27D7272E008742D0 /* DoesUserExistsDatabaseService.swift */; };
+		1D4EFCE827D7272E008742D0 /* ChangePasswordDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCBD27D7272E008742D0 /* ChangePasswordDatabaseService.swift */; };
+		1D4EFCE927D7272E008742D0 /* RemoveUserDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCBE27D7272E008742D0 /* RemoveUserDatabaseService.swift */; };
+		1D4EFCEA27D7272E008742D0 /* GetLastLoggedInUserDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCBF27D7272E008742D0 /* GetLastLoggedInUserDatabaseService.swift */; };
+		1D4EFCEB27D7272E008742D0 /* SetLastLoggedInUserDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCC027D7272E008742D0 /* SetLastLoggedInUserDatabaseService.swift */; };
+		1D4EFCEC27D7272E008742D0 /* IsCorrectPasswordDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCC127D7272E008742D0 /* IsCorrectPasswordDatabaseService.swift */; };
+		1D4EFCED27D7272E008742D0 /* GetReminderListDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCC227D7272E008742D0 /* GetReminderListDatabaseService.swift */; };
+		1D4EFCEE27D7272E008742D0 /* AddReminderDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCC427D7272E008742D0 /* AddReminderDatabaseContract.swift */; };
+		1D4EFCEF27D7272E008742D0 /* DeleteReminderDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCC527D7272E008742D0 /* DeleteReminderDatabaseContract.swift */; };
+		1D4EFCF027D7272E008742D0 /* GetReminderListDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCC627D7272E008742D0 /* GetReminderListDatabaseContract.swift */; };
+		1D4EFCF127D7272E008742D0 /* UpdateReminderDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCC727D7272E008742D0 /* UpdateReminderDatabaseContract.swift */; };
+		1D4EFCF227D7272E008742D0 /* CreateUserDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCC927D7272E008742D0 /* CreateUserDatabaseContract.swift */; };
+		1D4EFCF327D7272E008742D0 /* ChangePasswordDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCCA27D7272E008742D0 /* ChangePasswordDatabaseContract.swift */; };
+		1D4EFCF427D7272E008742D0 /* GetAllUsersDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCCB27D7272E008742D0 /* GetAllUsersDatabaseContract.swift */; };
+		1D4EFCF527D7272E008742D0 /* RemoveUserDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCCC27D7272E008742D0 /* RemoveUserDatabaseContract.swift */; };
+		1D4EFCF627D7272E008742D0 /* DoesUserExistsDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCCD27D7272E008742D0 /* DoesUserExistsDatabaseContract.swift */; };
+		1D4EFCF727D7272E008742D0 /* IsCorrectPasswordDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCCE27D7272E008742D0 /* IsCorrectPasswordDatabaseContract.swift */; };
+		1D4EFCF827D7272E008742D0 /* SetLastLoggedInUserDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCCF27D7272E008742D0 /* SetLastLoggedInUserDatabaseContract.swift */; };
+		1D4EFCF927D7272E008742D0 /* GetLastLoggedInUserDatabaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCD027D7272E008742D0 /* GetLastLoggedInUserDatabaseContract.swift */; };
+		1D4EFCFA27D7272E008742D0 /* DeleteReminderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCD227D7272E008742D0 /* DeleteReminderDataManager.swift */; };
+		1D4EFCFB27D7272E008742D0 /* GetReminderListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCD327D7272E008742D0 /* GetReminderListDataManager.swift */; };
+		1D4EFCFC27D7272E008742D0 /* UpdateReminderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCD427D7272E008742D0 /* UpdateReminderDataManager.swift */; };
+		1D4EFCFD27D7272E008742D0 /* AddReminderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCD527D7272E008742D0 /* AddReminderDataManager.swift */; };
+		1D4EFCFE27D7272E008742D0 /* GetLastLoggedInUserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCD727D7272E008742D0 /* GetLastLoggedInUserDataManager.swift */; };
+		1D4EFCFF27D7272E008742D0 /* GetAllUsersDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCD827D7272E008742D0 /* GetAllUsersDataManager.swift */; };
+		1D4EFD0027D7272E008742D0 /* CreateUserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCD927D7272E008742D0 /* CreateUserDataManager.swift */; };
+		1D4EFD0127D7272E008742D0 /* IsCorrectPasswordDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCDA27D7272E008742D0 /* IsCorrectPasswordDataManager.swift */; };
+		1D4EFD0227D7272E008742D0 /* SetLastLoggedInUserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCDB27D7272E008742D0 /* SetLastLoggedInUserDataManager.swift */; };
+		1D4EFD0327D7272E008742D0 /* RemoveUserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCDC27D7272E008742D0 /* RemoveUserDataManager.swift */; };
+		1D4EFD0427D7272E008742D0 /* ChangePasswordDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCDD27D7272E008742D0 /* ChangePasswordDataManager.swift */; };
+		1D4EFD0527D7272E008742D0 /* DoesUserExistsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFCDE27D7272E008742D0 /* DoesUserExistsDataManager.swift */; };
+		1D4EFD6927D72822008742D0 /* UpdateReminderDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD4827D72822008742D0 /* UpdateReminderDataManagerContract.swift */; };
+		1D4EFD6A27D72822008742D0 /* GetReminderListDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD4927D72822008742D0 /* GetReminderListDataManagerContract.swift */; };
+		1D4EFD6B27D72822008742D0 /* DeleteReminderDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD4A27D72822008742D0 /* DeleteReminderDataManagerContract.swift */; };
+		1D4EFD6C27D72822008742D0 /* AddReminderDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD4B27D72822008742D0 /* AddReminderDataManagerContract.swift */; };
+		1D4EFD6D27D72822008742D0 /* ChangePasswordDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD4D27D72822008742D0 /* ChangePasswordDataManagerContract.swift */; };
+		1D4EFD6E27D72822008742D0 /* SetLastLoggedInUserDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD4E27D72822008742D0 /* SetLastLoggedInUserDataManagerContract.swift */; };
+		1D4EFD6F27D72822008742D0 /* GetLastLoggedInUserDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD4F27D72822008742D0 /* GetLastLoggedInUserDataManagerContract.swift */; };
+		1D4EFD7027D72822008742D0 /* DoesUserExistsDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5027D72822008742D0 /* DoesUserExistsDataManagerContract.swift */; };
+		1D4EFD7127D72822008742D0 /* RemoveUserDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5127D72822008742D0 /* RemoveUserDataManagerContract.swift */; };
+		1D4EFD7227D72822008742D0 /* IsCorrectPasswordDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5227D72822008742D0 /* IsCorrectPasswordDataManagerContract.swift */; };
+		1D4EFD7327D72822008742D0 /* CreateUserDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5327D72822008742D0 /* CreateUserDataManagerContract.swift */; };
+		1D4EFD7427D72822008742D0 /* GetAllUsersDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5427D72822008742D0 /* GetAllUsersDataManagerContract.swift */; };
+		1D4EFD7527D72822008742D0 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5627D72822008742D0 /* WeekDay.swift */; };
+		1D4EFD7627D72822008742D0 /* RepeatPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5727D72822008742D0 /* RepeatPattern.swift */; };
+		1D4EFD7727D72822008742D0 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5827D72822008742D0 /* Reminder.swift */; };
+		1D4EFD7827D72822008742D0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5927D72822008742D0 /* User.swift */; };
+		1D4EFD7927D72822008742D0 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5A27D72822008742D0 /* Defaults.swift */; };
+		1D4EFD7A27D72822008742D0 /* UpdateReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5C27D72822008742D0 /* UpdateReminder.swift */; };
+		1D4EFD7B27D72822008742D0 /* AddReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5D27D72822008742D0 /* AddReminder.swift */; };
+		1D4EFD7C27D72822008742D0 /* GetReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD5E27D72822008742D0 /* GetReminderList.swift */; };
+		1D4EFD7D27D72822008742D0 /* RemoveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD6027D72822008742D0 /* RemoveUser.swift */; };
+		1D4EFD7E27D72822008742D0 /* GetLastLoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD6127D72822008742D0 /* GetLastLoggedInUser.swift */; };
+		1D4EFD7F27D72822008742D0 /* CreateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD6227D72822008742D0 /* CreateUser.swift */; };
+		1D4EFD8027D72822008742D0 /* GetAllUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD6327D72822008742D0 /* GetAllUsers.swift */; };
+		1D4EFD8127D72822008742D0 /* DoesUserExists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD6427D72822008742D0 /* DoesUserExists.swift */; };
+		1D4EFD8227D72822008742D0 /* IsCorrectPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD6527D72822008742D0 /* IsCorrectPassword.swift */; };
+		1D4EFD8327D72822008742D0 /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD6627D72822008742D0 /* ChangePassword.swift */; };
+		1D4EFD8427D72822008742D0 /* SetLastLoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD6727D72822008742D0 /* SetLastLoggedInUser.swift */; };
+		1D4EFD8527D72822008742D0 /* DeleteReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4EFD6827D72822008742D0 /* DeleteReminder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D4EFCA727D7271C008742D0 /* ReminderBackEnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReminderBackEnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D4EFCAA27D7271C008742D0 /* ReminderBackEnd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReminderBackEnd.h; sourceTree = "<group>"; };
+		1D4EFCB327D7272E008742D0 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		1D4EFCB427D7272E008742D0 /* AddReminderDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReminderDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCB527D7272E008742D0 /* ReminderDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDatabase.swift; sourceTree = "<group>"; };
+		1D4EFCB627D7272E008742D0 /* UserDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
+		1D4EFCB727D7272E008742D0 /* DeleteReminderDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteReminderDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCB827D7272E008742D0 /* UpdateReminderDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateReminderDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCBA27D7272E008742D0 /* CreateUserDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCBB27D7272E008742D0 /* GetAllUsersDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllUsersDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCBC27D7272E008742D0 /* DoesUserExistsDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoesUserExistsDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCBD27D7272E008742D0 /* ChangePasswordDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCBE27D7272E008742D0 /* RemoveUserDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveUserDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCBF27D7272E008742D0 /* GetLastLoggedInUserDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLastLoggedInUserDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCC027D7272E008742D0 /* SetLastLoggedInUserDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLastLoggedInUserDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCC127D7272E008742D0 /* IsCorrectPasswordDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsCorrectPasswordDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCC227D7272E008742D0 /* GetReminderListDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetReminderListDatabaseService.swift; sourceTree = "<group>"; };
+		1D4EFCC427D7272E008742D0 /* AddReminderDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReminderDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCC527D7272E008742D0 /* DeleteReminderDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteReminderDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCC627D7272E008742D0 /* GetReminderListDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetReminderListDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCC727D7272E008742D0 /* UpdateReminderDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateReminderDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCC927D7272E008742D0 /* CreateUserDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCCA27D7272E008742D0 /* ChangePasswordDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCCB27D7272E008742D0 /* GetAllUsersDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllUsersDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCCC27D7272E008742D0 /* RemoveUserDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveUserDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCCD27D7272E008742D0 /* DoesUserExistsDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoesUserExistsDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCCE27D7272E008742D0 /* IsCorrectPasswordDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsCorrectPasswordDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCCF27D7272E008742D0 /* SetLastLoggedInUserDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLastLoggedInUserDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCD027D7272E008742D0 /* GetLastLoggedInUserDatabaseContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLastLoggedInUserDatabaseContract.swift; sourceTree = "<group>"; };
+		1D4EFCD227D7272E008742D0 /* DeleteReminderDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteReminderDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCD327D7272E008742D0 /* GetReminderListDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetReminderListDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCD427D7272E008742D0 /* UpdateReminderDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateReminderDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCD527D7272E008742D0 /* AddReminderDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReminderDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCD727D7272E008742D0 /* GetLastLoggedInUserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLastLoggedInUserDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCD827D7272E008742D0 /* GetAllUsersDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllUsersDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCD927D7272E008742D0 /* CreateUserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCDA27D7272E008742D0 /* IsCorrectPasswordDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsCorrectPasswordDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCDB27D7272E008742D0 /* SetLastLoggedInUserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLastLoggedInUserDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCDC27D7272E008742D0 /* RemoveUserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveUserDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCDD27D7272E008742D0 /* ChangePasswordDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordDataManager.swift; sourceTree = "<group>"; };
+		1D4EFCDE27D7272E008742D0 /* DoesUserExistsDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoesUserExistsDataManager.swift; sourceTree = "<group>"; };
+		1D4EFD4827D72822008742D0 /* UpdateReminderDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateReminderDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD4927D72822008742D0 /* GetReminderListDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetReminderListDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD4A27D72822008742D0 /* DeleteReminderDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteReminderDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD4B27D72822008742D0 /* AddReminderDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReminderDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD4D27D72822008742D0 /* ChangePasswordDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD4E27D72822008742D0 /* SetLastLoggedInUserDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLastLoggedInUserDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD4F27D72822008742D0 /* GetLastLoggedInUserDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLastLoggedInUserDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD5027D72822008742D0 /* DoesUserExistsDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoesUserExistsDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD5127D72822008742D0 /* RemoveUserDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveUserDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD5227D72822008742D0 /* IsCorrectPasswordDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsCorrectPasswordDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD5327D72822008742D0 /* CreateUserDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD5427D72822008742D0 /* GetAllUsersDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllUsersDataManagerContract.swift; sourceTree = "<group>"; };
+		1D4EFD5627D72822008742D0 /* WeekDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
+		1D4EFD5727D72822008742D0 /* RepeatPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatPattern.swift; sourceTree = "<group>"; };
+		1D4EFD5827D72822008742D0 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		1D4EFD5927D72822008742D0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1D4EFD5A27D72822008742D0 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		1D4EFD5C27D72822008742D0 /* UpdateReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateReminder.swift; sourceTree = "<group>"; };
+		1D4EFD5D27D72822008742D0 /* AddReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReminder.swift; sourceTree = "<group>"; };
+		1D4EFD5E27D72822008742D0 /* GetReminderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetReminderList.swift; sourceTree = "<group>"; };
+		1D4EFD6027D72822008742D0 /* RemoveUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveUser.swift; sourceTree = "<group>"; };
+		1D4EFD6127D72822008742D0 /* GetLastLoggedInUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLastLoggedInUser.swift; sourceTree = "<group>"; };
+		1D4EFD6227D72822008742D0 /* CreateUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUser.swift; sourceTree = "<group>"; };
+		1D4EFD6327D72822008742D0 /* GetAllUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllUsers.swift; sourceTree = "<group>"; };
+		1D4EFD6427D72822008742D0 /* DoesUserExists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoesUserExists.swift; sourceTree = "<group>"; };
+		1D4EFD6527D72822008742D0 /* IsCorrectPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsCorrectPassword.swift; sourceTree = "<group>"; };
+		1D4EFD6627D72822008742D0 /* ChangePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
+		1D4EFD6727D72822008742D0 /* SetLastLoggedInUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLastLoggedInUser.swift; sourceTree = "<group>"; };
+		1D4EFD6827D72822008742D0 /* DeleteReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteReminder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,8 +182,180 @@
 			isa = PBXGroup;
 			children = (
 				1D4EFCAA27D7271C008742D0 /* ReminderBackEnd.h */,
+				1D4EFD4627D72822008742D0 /* Domain */,
+				1D4EFCB127D7272E008742D0 /* Data */,
 			);
 			path = ReminderBackEnd;
+			sourceTree = "<group>";
+		};
+		1D4EFCB127D7272E008742D0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFCB227D7272E008742D0 /* Database */,
+				1D4EFCC327D7272E008742D0 /* Contract */,
+				1D4EFCD127D7272E008742D0 /* Data Manager */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1D4EFCB227D7272E008742D0 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFCB327D7272E008742D0 /* Constant.swift */,
+				1D4EFCB427D7272E008742D0 /* AddReminderDatabaseService.swift */,
+				1D4EFCB527D7272E008742D0 /* ReminderDatabase.swift */,
+				1D4EFCB627D7272E008742D0 /* UserDatabase.swift */,
+				1D4EFCB727D7272E008742D0 /* DeleteReminderDatabaseService.swift */,
+				1D4EFCB827D7272E008742D0 /* UpdateReminderDatabaseService.swift */,
+				1D4EFCB927D7272E008742D0 /* Login */,
+				1D4EFCC227D7272E008742D0 /* GetReminderListDatabaseService.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		1D4EFCB927D7272E008742D0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFCBA27D7272E008742D0 /* CreateUserDatabaseService.swift */,
+				1D4EFCBB27D7272E008742D0 /* GetAllUsersDatabaseService.swift */,
+				1D4EFCBC27D7272E008742D0 /* DoesUserExistsDatabaseService.swift */,
+				1D4EFCBD27D7272E008742D0 /* ChangePasswordDatabaseService.swift */,
+				1D4EFCBE27D7272E008742D0 /* RemoveUserDatabaseService.swift */,
+				1D4EFCBF27D7272E008742D0 /* GetLastLoggedInUserDatabaseService.swift */,
+				1D4EFCC027D7272E008742D0 /* SetLastLoggedInUserDatabaseService.swift */,
+				1D4EFCC127D7272E008742D0 /* IsCorrectPasswordDatabaseService.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1D4EFCC327D7272E008742D0 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFCC427D7272E008742D0 /* AddReminderDatabaseContract.swift */,
+				1D4EFCC527D7272E008742D0 /* DeleteReminderDatabaseContract.swift */,
+				1D4EFCC627D7272E008742D0 /* GetReminderListDatabaseContract.swift */,
+				1D4EFCC727D7272E008742D0 /* UpdateReminderDatabaseContract.swift */,
+				1D4EFCC827D7272E008742D0 /* Login */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		1D4EFCC827D7272E008742D0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFCC927D7272E008742D0 /* CreateUserDatabaseContract.swift */,
+				1D4EFCCA27D7272E008742D0 /* ChangePasswordDatabaseContract.swift */,
+				1D4EFCCB27D7272E008742D0 /* GetAllUsersDatabaseContract.swift */,
+				1D4EFCCC27D7272E008742D0 /* RemoveUserDatabaseContract.swift */,
+				1D4EFCCD27D7272E008742D0 /* DoesUserExistsDatabaseContract.swift */,
+				1D4EFCCE27D7272E008742D0 /* IsCorrectPasswordDatabaseContract.swift */,
+				1D4EFCCF27D7272E008742D0 /* SetLastLoggedInUserDatabaseContract.swift */,
+				1D4EFCD027D7272E008742D0 /* GetLastLoggedInUserDatabaseContract.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1D4EFCD127D7272E008742D0 /* Data Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFCD227D7272E008742D0 /* DeleteReminderDataManager.swift */,
+				1D4EFCD327D7272E008742D0 /* GetReminderListDataManager.swift */,
+				1D4EFCD427D7272E008742D0 /* UpdateReminderDataManager.swift */,
+				1D4EFCD527D7272E008742D0 /* AddReminderDataManager.swift */,
+				1D4EFCD627D7272E008742D0 /* Login */,
+			);
+			path = "Data Manager";
+			sourceTree = "<group>";
+		};
+		1D4EFCD627D7272E008742D0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFCD727D7272E008742D0 /* GetLastLoggedInUserDataManager.swift */,
+				1D4EFCD827D7272E008742D0 /* GetAllUsersDataManager.swift */,
+				1D4EFCD927D7272E008742D0 /* CreateUserDataManager.swift */,
+				1D4EFCDA27D7272E008742D0 /* IsCorrectPasswordDataManager.swift */,
+				1D4EFCDB27D7272E008742D0 /* SetLastLoggedInUserDataManager.swift */,
+				1D4EFCDC27D7272E008742D0 /* RemoveUserDataManager.swift */,
+				1D4EFCDD27D7272E008742D0 /* ChangePasswordDataManager.swift */,
+				1D4EFCDE27D7272E008742D0 /* DoesUserExistsDataManager.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1D4EFD4627D72822008742D0 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFD4727D72822008742D0 /* Contract */,
+				1D4EFD5527D72822008742D0 /* Entity */,
+				1D4EFD5B27D72822008742D0 /* Use Case */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		1D4EFD4727D72822008742D0 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFD4827D72822008742D0 /* UpdateReminderDataManagerContract.swift */,
+				1D4EFD4927D72822008742D0 /* GetReminderListDataManagerContract.swift */,
+				1D4EFD4A27D72822008742D0 /* DeleteReminderDataManagerContract.swift */,
+				1D4EFD4B27D72822008742D0 /* AddReminderDataManagerContract.swift */,
+				1D4EFD4C27D72822008742D0 /* Login */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		1D4EFD4C27D72822008742D0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFD4D27D72822008742D0 /* ChangePasswordDataManagerContract.swift */,
+				1D4EFD4E27D72822008742D0 /* SetLastLoggedInUserDataManagerContract.swift */,
+				1D4EFD4F27D72822008742D0 /* GetLastLoggedInUserDataManagerContract.swift */,
+				1D4EFD5027D72822008742D0 /* DoesUserExistsDataManagerContract.swift */,
+				1D4EFD5127D72822008742D0 /* RemoveUserDataManagerContract.swift */,
+				1D4EFD5227D72822008742D0 /* IsCorrectPasswordDataManagerContract.swift */,
+				1D4EFD5327D72822008742D0 /* CreateUserDataManagerContract.swift */,
+				1D4EFD5427D72822008742D0 /* GetAllUsersDataManagerContract.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1D4EFD5527D72822008742D0 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFD5627D72822008742D0 /* WeekDay.swift */,
+				1D4EFD5727D72822008742D0 /* RepeatPattern.swift */,
+				1D4EFD5827D72822008742D0 /* Reminder.swift */,
+				1D4EFD5927D72822008742D0 /* User.swift */,
+				1D4EFD5A27D72822008742D0 /* Defaults.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		1D4EFD5B27D72822008742D0 /* Use Case */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFD5C27D72822008742D0 /* UpdateReminder.swift */,
+				1D4EFD5D27D72822008742D0 /* AddReminder.swift */,
+				1D4EFD5E27D72822008742D0 /* GetReminderList.swift */,
+				1D4EFD5F27D72822008742D0 /* Login */,
+				1D4EFD6827D72822008742D0 /* DeleteReminder.swift */,
+			);
+			path = "Use Case";
+			sourceTree = "<group>";
+		};
+		1D4EFD5F27D72822008742D0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1D4EFD6027D72822008742D0 /* RemoveUser.swift */,
+				1D4EFD6127D72822008742D0 /* GetLastLoggedInUser.swift */,
+				1D4EFD6227D72822008742D0 /* CreateUser.swift */,
+				1D4EFD6327D72822008742D0 /* GetAllUsers.swift */,
+				1D4EFD6427D72822008742D0 /* DoesUserExists.swift */,
+				1D4EFD6527D72822008742D0 /* IsCorrectPassword.swift */,
+				1D4EFD6627D72822008742D0 /* ChangePassword.swift */,
+				1D4EFD6727D72822008742D0 /* SetLastLoggedInUser.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,6 +437,74 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D4EFD7527D72822008742D0 /* WeekDay.swift in Sources */,
+				1D4EFCFF27D7272E008742D0 /* GetAllUsersDataManager.swift in Sources */,
+				1D4EFD6E27D72822008742D0 /* SetLastLoggedInUserDataManagerContract.swift in Sources */,
+				1D4EFCF327D7272E008742D0 /* ChangePasswordDatabaseContract.swift in Sources */,
+				1D4EFD6B27D72822008742D0 /* DeleteReminderDataManagerContract.swift in Sources */,
+				1D4EFD7C27D72822008742D0 /* GetReminderList.swift in Sources */,
+				1D4EFCE627D7272E008742D0 /* GetAllUsersDatabaseService.swift in Sources */,
+				1D4EFCEA27D7272E008742D0 /* GetLastLoggedInUserDatabaseService.swift in Sources */,
+				1D4EFCEC27D7272E008742D0 /* IsCorrectPasswordDatabaseService.swift in Sources */,
+				1D4EFD8027D72822008742D0 /* GetAllUsers.swift in Sources */,
+				1D4EFD7427D72822008742D0 /* GetAllUsersDataManagerContract.swift in Sources */,
+				1D4EFCF427D7272E008742D0 /* GetAllUsersDatabaseContract.swift in Sources */,
+				1D4EFD7F27D72822008742D0 /* CreateUser.swift in Sources */,
+				1D4EFD0427D7272E008742D0 /* ChangePasswordDataManager.swift in Sources */,
+				1D4EFD7827D72822008742D0 /* User.swift in Sources */,
+				1D4EFD6C27D72822008742D0 /* AddReminderDataManagerContract.swift in Sources */,
+				1D4EFD7727D72822008742D0 /* Reminder.swift in Sources */,
+				1D4EFCE027D7272E008742D0 /* AddReminderDatabaseService.swift in Sources */,
+				1D4EFD8327D72822008742D0 /* ChangePassword.swift in Sources */,
+				1D4EFD8527D72822008742D0 /* DeleteReminder.swift in Sources */,
+				1D4EFD8427D72822008742D0 /* SetLastLoggedInUser.swift in Sources */,
+				1D4EFCE727D7272E008742D0 /* DoesUserExistsDatabaseService.swift in Sources */,
+				1D4EFCFB27D7272E008742D0 /* GetReminderListDataManager.swift in Sources */,
+				1D4EFD7327D72822008742D0 /* CreateUserDataManagerContract.swift in Sources */,
+				1D4EFCFC27D7272E008742D0 /* UpdateReminderDataManager.swift in Sources */,
+				1D4EFCEB27D7272E008742D0 /* SetLastLoggedInUserDatabaseService.swift in Sources */,
+				1D4EFCF527D7272E008742D0 /* RemoveUserDatabaseContract.swift in Sources */,
+				1D4EFCF827D7272E008742D0 /* SetLastLoggedInUserDatabaseContract.swift in Sources */,
+				1D4EFD7227D72822008742D0 /* IsCorrectPasswordDataManagerContract.swift in Sources */,
+				1D4EFCFD27D7272E008742D0 /* AddReminderDataManager.swift in Sources */,
+				1D4EFCE227D7272E008742D0 /* UserDatabase.swift in Sources */,
+				1D4EFD7B27D72822008742D0 /* AddReminder.swift in Sources */,
+				1D4EFCED27D7272E008742D0 /* GetReminderListDatabaseService.swift in Sources */,
+				1D4EFD8127D72822008742D0 /* DoesUserExists.swift in Sources */,
+				1D4EFD0527D7272E008742D0 /* DoesUserExistsDataManager.swift in Sources */,
+				1D4EFCE327D7272E008742D0 /* DeleteReminderDatabaseService.swift in Sources */,
+				1D4EFD7E27D72822008742D0 /* GetLastLoggedInUser.swift in Sources */,
+				1D4EFCFE27D7272E008742D0 /* GetLastLoggedInUserDataManager.swift in Sources */,
+				1D4EFCF927D7272E008742D0 /* GetLastLoggedInUserDatabaseContract.swift in Sources */,
+				1D4EFCF627D7272E008742D0 /* DoesUserExistsDatabaseContract.swift in Sources */,
+				1D4EFD7627D72822008742D0 /* RepeatPattern.swift in Sources */,
+				1D4EFD0027D7272E008742D0 /* CreateUserDataManager.swift in Sources */,
+				1D4EFD6A27D72822008742D0 /* GetReminderListDataManagerContract.swift in Sources */,
+				1D4EFCE427D7272E008742D0 /* UpdateReminderDatabaseService.swift in Sources */,
+				1D4EFCEE27D7272E008742D0 /* AddReminderDatabaseContract.swift in Sources */,
+				1D4EFCF127D7272E008742D0 /* UpdateReminderDatabaseContract.swift in Sources */,
+				1D4EFCEF27D7272E008742D0 /* DeleteReminderDatabaseContract.swift in Sources */,
+				1D4EFD7A27D72822008742D0 /* UpdateReminder.swift in Sources */,
+				1D4EFD0327D7272E008742D0 /* RemoveUserDataManager.swift in Sources */,
+				1D4EFCE127D7272E008742D0 /* ReminderDatabase.swift in Sources */,
+				1D4EFD6D27D72822008742D0 /* ChangePasswordDataManagerContract.swift in Sources */,
+				1D4EFD7927D72822008742D0 /* Defaults.swift in Sources */,
+				1D4EFCF227D7272E008742D0 /* CreateUserDatabaseContract.swift in Sources */,
+				1D4EFCE827D7272E008742D0 /* ChangePasswordDatabaseService.swift in Sources */,
+				1D4EFD0227D7272E008742D0 /* SetLastLoggedInUserDataManager.swift in Sources */,
+				1D4EFCDF27D7272E008742D0 /* Constant.swift in Sources */,
+				1D4EFCE527D7272E008742D0 /* CreateUserDatabaseService.swift in Sources */,
+				1D4EFD0127D7272E008742D0 /* IsCorrectPasswordDataManager.swift in Sources */,
+				1D4EFD6F27D72822008742D0 /* GetLastLoggedInUserDataManagerContract.swift in Sources */,
+				1D4EFCFA27D7272E008742D0 /* DeleteReminderDataManager.swift in Sources */,
+				1D4EFD7D27D72822008742D0 /* RemoveUser.swift in Sources */,
+				1D4EFCE927D7272E008742D0 /* RemoveUserDatabaseService.swift in Sources */,
+				1D4EFD7027D72822008742D0 /* DoesUserExistsDataManagerContract.swift in Sources */,
+				1D4EFD6927D72822008742D0 /* UpdateReminderDataManagerContract.swift in Sources */,
+				1D4EFD7127D72822008742D0 /* RemoveUserDataManagerContract.swift in Sources */,
+				1D4EFCF027D7272E008742D0 /* GetReminderListDatabaseContract.swift in Sources */,
+				1D4EFCF727D7272E008742D0 /* IsCorrectPasswordDatabaseContract.swift in Sources */,
+				1D4EFD8227D72822008742D0 /* IsCorrectPassword.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
