@@ -24,7 +24,7 @@ public final class DeleteReminderResponse {
 }
 
 public final class DeleteReminderError {
-    var status: Status
+    public var status: Status
     
     public enum Status {
         case noDatabaseConnection

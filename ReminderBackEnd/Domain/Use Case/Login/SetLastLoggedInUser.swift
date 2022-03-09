@@ -22,7 +22,7 @@ public final class SetLastLoggedInUserResponse {
 }
 
 public final class SetLastLoggedInUserError {
-    var status: Status
+    public var status: Status
     
     public enum Status {
         case noDatabaseConnection

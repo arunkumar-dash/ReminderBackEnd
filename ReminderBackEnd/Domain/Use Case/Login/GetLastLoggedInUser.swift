@@ -21,7 +21,7 @@ public final class GetLastLoggedInUserResponse {
 }
 
 public final class GetLastLoggedInUserError {
-    var status: Status
+    public var status: Status
     
     public enum Status {
         case noDatabaseConnection

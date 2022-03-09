@@ -13,8 +13,9 @@ public class SetLastLoggedInUserDatabaseService: SetLastLoggedInUserDatabaseCont
     }
     
     public func setLastLoggedInUser(user: User, success: (User) -> Void, failure: (String) -> Void) {
-        Constant.shared.lastLoggedInUser = user
-        if Constant.shared.lastLoggedInUser?.username == user.username {
+        var constants = Constants()
+        constants.lastLoggedInUser = user
+        if constants.lastLoggedInUser?.username == user.username {
             success(user)
         } else {
             failure("Updation Failed")

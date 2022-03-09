@@ -307,8 +307,8 @@ class ReminderDatabase {
                 }
             }
         }
-        
-        let databaseFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(Constant.DB_FOLDER)
+        let constants = Constants()
+        let databaseFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(constants.DB_FOLDER)
         /// The path where the database file is to be located
         do {
             try FileManager.default.createDirectory(at: databaseFolder, withIntermediateDirectories: true, attributes: nil)

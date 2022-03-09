@@ -33,36 +33,43 @@ public class ReminderDefaults: Defaults {
     /// Default title for Reminder
     static var title: String {
         get {
-            "\(Constant.shared.REMINDER_TITLE)-\(Date.now.description(with: Locale.current))"
+            let constants = Constants()
+            return "\(constants.REMINDER_TITLE)-\(Date.now.description(with: Locale.current))"
         }
         set {
-            Constant.shared.REMINDER_TITLE = newValue
+            var constants = Constants()
+            constants.REMINDER_TITLE = newValue
         }
     }
     
     /// Default description for Reminder
     static var description: String {
         get {
-            return Constant.shared.REMINDER_DESCRIPTION
+            let constants = Constants()
+            return constants.REMINDER_DESCRIPTION
         }
         set {
-            Constant.shared.REMINDER_DESCRIPTION = newValue
+            var constants = Constants()
+            constants.REMINDER_DESCRIPTION = newValue
         }
     }
     
     /// Default time when the Reminder rings
     /// Default time set here is one hour(3600 seconds) after the time when Reminder was added
     static var eventTime: Date {
-        Date.now + Constant.shared.REMINDER_EVENT_TIME.rawValue
+        let constants = Constants()
+        return Date.now + constants.REMINDER_EVENT_TIME.rawValue
     }
     
     /// Default ringing sound of the Reminder
     static var sound: String {
         get {
-            Constant.shared.REMINDER_SOUND_PATH
+            let constants = Constants()
+            return constants.REMINDER_SOUND_PATH
         }
         set {
-            Constant.shared.REMINDER_SOUND_PATH = newValue
+            var constants = Constants()
+            constants.REMINDER_SOUND_PATH = newValue
         }
     }
     
@@ -70,10 +77,12 @@ public class ReminderDefaults: Defaults {
     /// Default pattern is no repetitions
     static var repeatTiming: RepeatPattern {
         get {
-            Constant.shared.REMINDER_REPEAT_PATTERN
+            let constants = Constants()
+            return constants.REMINDER_REPEAT_PATTERN
         }
         set {
-            Constant.shared.REMINDER_REPEAT_PATTERN = newValue
+            var constants = Constants()
+            constants.REMINDER_REPEAT_PATTERN = newValue
         }
     }
     
@@ -81,10 +90,12 @@ public class ReminderDefaults: Defaults {
     /// By default the reminder rings 30 minutes before the `eventTime`
     static var ringTimeIntervals: Set<TimeInterval> {
         get {
-            Constant.shared.REMINDER_RING_TIME_INTERVALS
+            let constants = Constants()
+            return constants.REMINDER_RING_TIME_INTERVALS
         }
         set {
-            Constant.shared.REMINDER_RING_TIME_INTERVALS = newValue
+            var constants = Constants()
+            constants.REMINDER_RING_TIME_INTERVALS = newValue
         }
     }
 //    let reminderView = ReminderView(self)

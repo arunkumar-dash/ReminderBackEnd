@@ -22,7 +22,7 @@ public final class GetReminderListResponse {
 }
 
 public final class GetReminderListError {
-    var status: Status
+    public var status: Status
     
     public enum Status {
         case noDatabaseConnection

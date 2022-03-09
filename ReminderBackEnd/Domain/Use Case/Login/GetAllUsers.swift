@@ -21,7 +21,7 @@ public final class GetAllUsersResponse {
 }
 
 public final class GetAllUsersError {
-    var status: Status
+    public var status: Status
     
     public enum Status {
         case noDatabaseConnection

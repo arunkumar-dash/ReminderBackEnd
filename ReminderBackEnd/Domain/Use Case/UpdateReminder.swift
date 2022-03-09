@@ -25,7 +25,7 @@ public final class UpdateReminderResponse {
 }
 
 public final class UpdateReminderError {
-    var status: Status
+    public var status: Status
     
     public enum Status {
         case noDatabaseConnection

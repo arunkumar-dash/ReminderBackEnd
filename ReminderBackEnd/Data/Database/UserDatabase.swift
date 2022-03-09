@@ -16,7 +16,6 @@ class UserDatabase {
             print("Reconnecting to DB...")
             sleep(1)
         }
-        Constant.updateFromDB()
     }
     
     
@@ -58,8 +57,9 @@ class UserDatabase {
     }
     
     private func connect() -> Bool {
+        let constants = Constants()
         var result = true
-        let databaseFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(Constant.DB_FOLDER)
+        let databaseFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(constants.DB_FOLDER)
         
         do {
             try FileManager.default.createDirectory(at: databaseFolder, withIntermediateDirectories: true, attributes: nil)
@@ -134,7 +134,9 @@ class UserDatabase {
                 }
                 let passwordString = encodedPassword as NSString
                 
-                let imageFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(Constant.DB_FOLDER).appendingPathComponent(Constant.IMAGE_FOLDER)
+                let constants = Constants()
+                
+                let imageFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(constants.DB_FOLDER).appendingPathComponent(constants.IMAGE_FOLDER)
                 do {
                     try FileManager.default.createDirectory(at: imageFolder, withIntermediateDirectories: true, attributes: nil)
                 } catch let error {

@@ -22,7 +22,7 @@ public final class RemoveUserResponse {
 }
 
 public final class RemoveUserError {
-    var status: Status
+    public var status: Status
     
     public enum Status {
         case noDatabaseConnection

@@ -13,15 +13,23 @@ extension TimeInterval: ExpressibleByStringLiteral {
     }
 }
 
-struct Constant: Codable {
+struct Constants: Codable {
     
-    static let DB_FOLDER = ".ReminderAppDatabase"
+    var DB_FOLDER = ".ReminderAppDatabase"
     
-    static let IMAGE_FOLDER = ".Images"
+    var IMAGE_FOLDER = ".Images"
     
-    var lastLoggedInUser: User? = nil
+    var lastLoggedInUser: User? = nil {
+        didSet {
+            self.sync()
+        }
+    }
     
-    var REMINDER_SOUND_PATH = "/Users/arun-pt4306/Downloads/sound.wav"
+    var REMINDER_SOUND_PATH = "/Users/arun-pt4306/Downloads/sound.wav" {
+        didSet {
+            self.sync()
+        }
+    }
     
     enum TimeIntervals: TimeInterval, CaseIterable, Codable {
         case oneHour = 3600
@@ -31,24 +39,48 @@ struct Constant: Codable {
         case fiveMinutes = 300
     }
     
-    var REMINDER_TITLE = "Reminder"
-    
-    var REMINDER_DESCRIPTION = "Your description goes here..."
-    
-    var REMINDER_REPEAT_PATTERN: RepeatPattern = .never
-    
-    var REMINDER_EVENT_TIME: TimeIntervals = .oneHour
-    
-    var REMINDER_RING_TIME_INTERVALS: Set<TimeInterval> = Set([Constant.TimeIntervals.halfHour.rawValue])
-    
-    var NOTIFICATION_SNOOZE_TIME = Constant.TimeIntervals.tenMinutes.rawValue
-    
-    private init() {
-        
+    var REMINDER_TITLE = "Reminder" {
+        didSet {
+            self.sync()
+        }
     }
     
-    static func updateFromDB() {
-        let databaseFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(Constant.DB_FOLDER)
+    var REMINDER_DESCRIPTION = "Your description goes here..." {
+        didSet {
+            self.sync()
+        }
+    }
+    
+    var REMINDER_REPEAT_PATTERN: RepeatPattern = .never {
+        didSet {
+            self.sync()
+        }
+    }
+    
+    var REMINDER_EVENT_TIME: TimeIntervals = .oneHour {
+        didSet {
+            self.sync()
+        }
+    }
+    
+    var REMINDER_RING_TIME_INTERVALS: Set<TimeInterval> = Set([Constants.TimeIntervals.halfHour.rawValue]) {
+        didSet {
+            self.sync()
+        }
+    }
+    
+    var NOTIFICATION_SNOOZE_TIME = Constants.TimeIntervals.tenMinutes.rawValue {
+        didSet {
+            self.sync()
+        }
+    }
+    
+    init() {
+        updateFromDB()
+    }
+    
+    mutating func updateFromDB() {
+        let databaseFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(self.DB_FOLDER)
         
         do {
             try FileManager.default.createDirectory(at: databaseFolder, withIntermediateDirectories: true, attributes: nil)
@@ -62,7 +94,7 @@ struct Constant: Codable {
         if let data = try? Data(contentsOf: url) {
             print("Saved defaults file found")
             if let constant = try? JSONDecoder().decode(Self.self, from: data) {
-                Constant.shared = constant
+                self = constant
                 print("Saved defaults decoded")
             } else {
                 print("Cannot decode the defaults file from database")
@@ -70,7 +102,7 @@ struct Constant: Codable {
             }
         } else {
             do {
-                try JSONEncoder().encode(Constant.shared).write(to: url)
+                try JSONEncoder().encode(self).write(to: url)
             } catch let error {
                 print("Cannot encode defaults to a file")
                 print(error)
@@ -80,8 +112,8 @@ struct Constant: Codable {
         }
     }
     
-    private static func sync() {
-        let databaseFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(Constant.DB_FOLDER)
+    private func sync() {
+        let databaseFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(self.DB_FOLDER)
         
         do {
             try FileManager.default.createDirectory(at: databaseFolder, withIntermediateDirectories: true, attributes: nil)
@@ -93,17 +125,11 @@ struct Constant: Codable {
         
         let url = databaseFolder.appendingPathComponent("defaults.json")
         do {
-            try JSONEncoder().encode(Constant.shared).write(to: url)
+            try JSONEncoder().encode(self).write(to: url)
         } catch let error {
             print("Cannot encode defaults to a file")
             print(error)
             return
-        }
-    }
-    
-    static var shared = Constant() {
-        didSet {
-            Constant.sync()
         }
     }
 }

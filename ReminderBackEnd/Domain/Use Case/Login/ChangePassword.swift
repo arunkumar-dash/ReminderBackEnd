@@ -24,7 +24,7 @@ public final class ChangePasswordResponse {
 }
 
 public final class ChangePasswordError {
-    var status: Status
+    public var status: Status
     
     public enum Status {
         case noDatabaseConnection

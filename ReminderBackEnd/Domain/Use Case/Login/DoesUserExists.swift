@@ -22,7 +22,7 @@ public final class DoesUserExistsResponse {
 }
 
 public final class DoesUserExistsError {
-    var status: Status
+    public var status: Status
     
     public enum Status {
         case noDatabaseConnection
