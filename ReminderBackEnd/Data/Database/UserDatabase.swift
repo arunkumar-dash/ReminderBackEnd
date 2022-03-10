@@ -272,7 +272,10 @@ class UserDatabase {
                     guard let password = String(data: data, encoding: .utf8) else {
                         continue
                     }
-                    let imageURL = URL(string: String(cString: sqlite3_column_text(selectSql, 2)))
+                    var imageURL: URL? = nil
+                    if let optionalURL = sqlite3_column_text(selectSql, 2) {
+                        imageURL = URL(string: String(cString: optionalURL))
+                    }
                     let user = User(username: String(cString: username), password: password, imageURL: imageURL)
                     userList.append(user)
                 }
