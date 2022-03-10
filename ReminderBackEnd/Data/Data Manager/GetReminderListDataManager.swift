@@ -33,10 +33,10 @@ public class GetReminderListDataManager: GetReminderListDataManagerContract {
     
     private func failure(message: String, callback: (GetReminderListError) -> Void) {
         if message == "No Data" {
-            let error = GetReminderListError(status: .noDataFound)
+            let error = GetReminderListError(status: .unknownError)
             callback(error)
         } else if message == "No Database Connection" {
-            let error = GetReminderListError(status: .noDatabaseConnection)
+            let error = GetReminderListError(status: .networkUnavailable)
             callback(error)
         }
     }

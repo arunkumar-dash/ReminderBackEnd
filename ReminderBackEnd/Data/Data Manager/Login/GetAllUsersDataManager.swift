@@ -32,10 +32,10 @@ public class GetAllUsersDataManager: GetAllUsersDataManagerContract {
     
     private func failure(message: String, callback: (GetAllUsersError) -> Void) {
         if message == "No Database Connection" {
-            let error = GetAllUsersError(status: .noDatabaseConnection)
+            let error = GetAllUsersError(status: .networkUnavailable)
             callback(error)
         } else if message == "No User Found" {
-            let error = GetAllUsersError(status: .noUserFound)
+            let error = GetAllUsersError(status: .unknownError)
             callback(error)
         }
     }

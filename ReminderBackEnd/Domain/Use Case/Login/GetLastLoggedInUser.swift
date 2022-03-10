@@ -7,72 +7,47 @@
 
 import Foundation
 
-public final class GetLastLoggedInUserRequest {
-    public init() {
+public final class GetLastLoggedInUserRequest: ZRequest {
+    public override init() {
         
     }
 }
 
-public final class GetLastLoggedInUserResponse {
+public final class GetLastLoggedInUserResponse: ZResponse {
     public var user: User
     public init(user: User) {
         self.user = user
     }
 }
 
-public final class GetLastLoggedInUserError {
-    public var status: Status
-    
-    public enum Status {
-        case noDatabaseConnection
-        case noUserFound
-    }
-    
-    public init(status: Status) {
-        self.status = status
-    }
+public final class GetLastLoggedInUserError: ZError {
 }
 
-public class GetLastLoggedInUser {
+public class GetLastLoggedInUser: ZUsecase<GetLastLoggedInUserRequest, GetLastLoggedInUserResponse, GetLastLoggedInUserError> {
     var dataManager: GetLastLoggedInUserDataManagerContract
     public init(dataManager: GetLastLoggedInUserDataManagerContract) {
         self.dataManager = dataManager
     }
     
-    public func run(request: GetLastLoggedInUserRequest, success: @escaping (GetLastLoggedInUserResponse) -> Void, failure: @escaping (GetLastLoggedInUserError) -> Void) {
-        UsecaseQueue.queue.async {
+    public override func run(request: GetLastLoggedInUserRequest, success: @escaping (GetLastLoggedInUserResponse) -> Void, failure: @escaping (GetLastLoggedInUserError) -> Void) {
+        
+        self.dataManager.getLastLoggedInUser(success: {
             [weak self]
-            in
-            self?.dataManager.getLastLoggedInUser(success: {
-                [weak self]
-                (user) in
-                self?.success(user: user, callback: success)
-            }, failure: {
-                [weak self]
-                (error) in
-                self?.failure(error: error, callback: failure)
-            })
-        }
+            (user) in
+            self?.success(user: user, callback: success)
+        }, failure: {
+            [weak self]
+            (error) in
+            self?.failure(error: error, callback: failure)
+        })
     }
     
     private func success(user: User, callback: @escaping (GetLastLoggedInUserResponse) -> Void) {
         let response = GetLastLoggedInUserResponse(user: user)
-        if Thread.isMainThread {
-            callback(response)
-        } else {
-            DispatchQueue.main.async {
-                callback(response)
-            }
-        }
+        invokeSuccess(callback: callback, response: response)
     }
     
     private func failure(error: GetLastLoggedInUserError, callback: @escaping (GetLastLoggedInUserError) -> Void) {
-        if Thread.isMainThread {
-            callback(error)
-        } else {
-            DispatchQueue.main.async {
-                callback(error)
-            }
-        }
+        invokeFailure(callback: callback, failure: error)
     }
 }

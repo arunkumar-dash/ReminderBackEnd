@@ -32,10 +32,10 @@ public class SetLastLoggedInUserDataManager: SetLastLoggedInUserDataManagerContr
     
     private func failure(message: String, callback: (SetLastLoggedInUserError) -> Void) {
         if message == "No Database Connection" {
-            let error = SetLastLoggedInUserError(status: .noDatabaseConnection)
+            let error = SetLastLoggedInUserError(status: .networkUnavailable)
             callback(error)
         } else if message == "Updation Failed" {
-            let error = SetLastLoggedInUserError(status: .updationFailed)
+            let error = SetLastLoggedInUserError(status: .unknownError)
             callback(error)
         }
     }

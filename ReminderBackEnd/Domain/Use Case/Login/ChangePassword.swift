@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class ChangePasswordRequest {
+public final class ChangePasswordRequest: ZRequest {
     var username: String
     var password: String
     public init(username: String, password: String) {
@@ -16,66 +16,42 @@ public final class ChangePasswordRequest {
     }
 }
 
-public final class ChangePasswordResponse {
+public final class ChangePasswordResponse: ZResponse {
     public var username: String
     public init(username: String) {
         self.username = username
     }
 }
 
-public final class ChangePasswordError {
-    public var status: Status
+public final class ChangePasswordError: ZError {
     
-    public enum Status {
-        case noDatabaseConnection
-        case updationFailed
-    }
-    
-    public init(status: Status) {
-        self.status = status
-    }
 }
 
-public class ChangePassword {
+public class ChangePassword: ZUsecase<ChangePasswordRequest, ChangePasswordResponse, ChangePasswordError> {
     var dataManager: ChangePasswordDataManagerContract
     public init(dataManager: ChangePasswordDataManagerContract) {
         self.dataManager = dataManager
     }
     
-    public func run(request: ChangePasswordRequest, success: @escaping (ChangePasswordResponse) -> Void, failure: @escaping (ChangePasswordError) -> Void) {
-        UsecaseQueue.queue.async {
+    public override func run(request: ChangePasswordRequest, success: @escaping (ChangePasswordResponse) -> Void, failure: @escaping (ChangePasswordError) -> Void) {
+        
+        self.dataManager.changePassword(username: request.username, password: request.password, success: {
             [weak self]
-            in
-            self?.dataManager.changePassword(username: request.username, password: request.password, success: {
-                [weak self]
-                (username) in
-                self?.success(username: username, callback: success)
-            }, failure: {
-                [weak self]
-                (error) in
-                self?.failure(error: error, callback: failure)
-            })
-        }
+            (username) in
+            self?.success(username: username, callback: success)
+        }, failure: {
+            [weak self]
+            (error) in
+            self?.failure(error: error, callback: failure)
+        })
     }
     
     private func success(username: String, callback: @escaping (ChangePasswordResponse) -> Void) {
         let response = ChangePasswordResponse(username: username)
-        if Thread.isMainThread {
-            callback(response)
-        } else {
-            DispatchQueue.main.async {
-                callback(response)
-            }
-        }
+        invokeSuccess(callback: callback, response: response)
     }
     
     private func failure(error: ChangePasswordError, callback: @escaping (ChangePasswordError) -> Void) {
-        if Thread.isMainThread {
-            callback(error)
-        } else {
-            DispatchQueue.main.async {
-                callback(error)
-            }
-        }
+        invokeFailure(callback: callback, failure: error)
     }
 }

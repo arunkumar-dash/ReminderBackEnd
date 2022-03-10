@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class CreateUserRequest {
+public final class CreateUserRequest: ZRequest {
     var username: String
     var password: String
     var imageURL: URL?
@@ -18,67 +18,41 @@ public final class CreateUserRequest {
     }
 }
 
-public final class CreateUserResponse {
+public final class CreateUserResponse: ZResponse {
     public var username: String
     public init(username: String) {
         self.username = username
     }
 }
 
-public final class CreateUserError {
-    public var status: Status
+public final class CreateUserError: ZError {
     
-    public enum Status {
-        case noDatabaseConnection
-        case creationFailed
-        case userAlreadyExists
-    }
-    
-    public init(status: Status) {
-        self.status = status
-    }
 }
 
-public class CreateUser {
+public class CreateUser: ZUsecase<CreateUserRequest, CreateUserResponse, CreateUserError> {
     var dataManager: CreateUserDataManagerContract
     public init(dataManager: CreateUserDataManagerContract) {
         self.dataManager = dataManager
     }
     
-    public func run(request: CreateUserRequest, success: @escaping (CreateUserResponse) -> Void, failure: @escaping (CreateUserError) -> Void) {
-        UsecaseQueue.queue.async {
+    public override func run(request: CreateUserRequest, success: @escaping (CreateUserResponse) -> Void, failure: @escaping (CreateUserError) -> Void) {
+        self.dataManager.createUser(username: request.username, password: request.password, imageURL: request.imageURL, success: {
             [weak self]
-            in
-            self?.dataManager.createUser(username: request.username, password: request.password, imageURL: request.imageURL, success: {
-                [weak self]
-                (username) in
-                self?.success(username: username, callback: success)
-            }, failure: {
-                [weak self]
-                (error) in
-                self?.failure(error: error, callback: failure)
-            })
-        }
+            (username) in
+            self?.success(username: username, callback: success)
+        }, failure: {
+            [weak self]
+            (error) in
+            self?.failure(error: error, callback: failure)
+        })
     }
     
     private func success(username: String, callback: @escaping (CreateUserResponse) -> Void) {
         let response = CreateUserResponse(username: username)
-        if Thread.isMainThread {
-            callback(response)
-        } else {
-            DispatchQueue.main.async {
-                callback(response)
-            }
-        }
+        invokeSuccess(callback: callback, response: response)
     }
     
     private func failure(error: CreateUserError, callback: @escaping (CreateUserError) -> Void) {
-        if Thread.isMainThread {
-            callback(error)
-        } else {
-            DispatchQueue.main.async {
-                callback(error)
-            }
-        }
+        invokeFailure(callback: callback, failure: error)
     }
 }

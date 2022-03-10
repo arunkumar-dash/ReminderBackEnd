@@ -32,10 +32,10 @@ public class ChangePasswordDataManager: ChangePasswordDataManagerContract {
     
     private func failure(message: String, callback: (ChangePasswordError) -> Void) {
         if message == "No Database Connection" {
-            let error = ChangePasswordError(status: .noDatabaseConnection)
+            let error = ChangePasswordError(status: .networkUnavailable)
             callback(error)
         } else if message == "Updation Failed" {
-            let error = ChangePasswordError(status: .updationFailed)
+            let error = ChangePasswordError(status: .unknownError)
             callback(error)
         }
     }

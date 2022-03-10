@@ -32,13 +32,13 @@ public class IsCorrectPasswordDataManager: IsCorrectPasswordDataManagerContract 
     
     private func failure(message: String, callback: (IsCorrectPasswordError) -> Void) {
         if message == "No Database Connection" {
-            let error = IsCorrectPasswordError(status: .noDatabaseConnection)
+            let error = IsCorrectPasswordError(status: .networkUnavailable)
             callback(error)
         } else if message == "User Name Not Found" {
-            let error = IsCorrectPasswordError(status: .userNameNotFound)
+            let error = IsCorrectPasswordError(status: .authenticationFailure)
             callback(error)
         } else if message == "Password Incorrect" {
-            let error = IsCorrectPasswordError(status: .passwordIncorrect)
+            let error = IsCorrectPasswordError(status: .authenticationFailure)
             callback(error)
         }
     }

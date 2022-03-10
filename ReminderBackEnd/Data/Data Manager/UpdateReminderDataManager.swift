@@ -32,13 +32,13 @@ public class UpdateReminderDataManager: UpdateReminderDataManagerContract {
     
     private func failure(message: String, callback: (UpdateReminderError) -> Void) {
         if message == "Updation Failed" {
-            let error = UpdateReminderError(status: .updationFailed)
+            let error = UpdateReminderError(status: .unknownError)
             callback(error)
         } else if message == "Invalid Data" {
-            let error = UpdateReminderError(status: .invalidData)
+            let error = UpdateReminderError(status: .unknownError)
             callback(error)
         } else if message == "No Database Connection" {
-            let error = UpdateReminderError(status: .noDatabaseConnection)
+            let error = UpdateReminderError(status: .networkUnavailable)
             callback(error)
         }
     }

@@ -32,10 +32,10 @@ public class DoesUserExistsDataManager: DoesUserExistsDataManagerContract {
     
     private func failure(message: String, callback: (DoesUserExistsError) -> Void) {
         if message == "No Database Connection" {
-            let error = DoesUserExistsError(status: .noDatabaseConnection)
+            let error = DoesUserExistsError(status: .networkUnavailable)
             callback(error)
         } else if message == "User Does Not Exists" {
-            let error = DoesUserExistsError(status: .userDoesNotExists)
+            let error = DoesUserExistsError(status: .unknownError)
             callback(error)
         }
     }

@@ -32,10 +32,10 @@ public class AddReminderDataManager: AddReminderDataManagerContract {
     
     private func failure(message: String, callback: (AddReminderError) -> Void) {
         if message == "Addition Failed" {
-            let error = AddReminderError(status: .additionFailed)
+            let error = AddReminderError(status: .unknownError)
             callback(error)
         } else if message == "No Database Connection" {
-            let error = AddReminderError(status: .noDatabaseConnection)
+            let error = AddReminderError(status: .networkUnavailable)
             callback(error)
         }
     }

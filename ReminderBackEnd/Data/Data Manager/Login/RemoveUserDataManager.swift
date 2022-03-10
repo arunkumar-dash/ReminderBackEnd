@@ -32,10 +32,10 @@ public class RemoveUserDataManager: RemoveUserDataManagerContract {
     
     private func failure(message: String, callback: (RemoveUserError) -> Void) {
         if message == "No Database Connection" {
-            let error = RemoveUserError(status: .noDatabaseConnection)
+            let error = RemoveUserError(status: .networkUnavailable)
             callback(error)
         } else if message == "Deletion Failed" {
-            let error = RemoveUserError(status: .deletionFailed)
+            let error = RemoveUserError(status: .unknownError)
             callback(error)
         }
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 
-public final class UpdateReminderRequest {
+public final class UpdateReminderRequest: ZRequest {
     var username: String
     var reminder: Reminder
     public init(username: String, reminder: Reminder) {
@@ -17,68 +17,42 @@ public final class UpdateReminderRequest {
     }
 }
 
-public final class UpdateReminderResponse {
+public final class UpdateReminderResponse: ZResponse {
     public var reminder: Reminder
     public init(reminder: Reminder) {
         self.reminder = reminder
     }
 }
 
-public final class UpdateReminderError {
-    public var status: Status
+public final class UpdateReminderError: ZError {
     
-    public enum Status {
-        case noDatabaseConnection
-        case updationFailed
-        case invalidData
-    }
-    
-    public init(status: Status) {
-        self.status = status
-    }
 }
 
-public class UpdateReminder {
+public class UpdateReminder: ZUsecase<UpdateReminderRequest, UpdateReminderResponse, UpdateReminderError> {
     var dataManager: UpdateReminderDataManagerContract
     
     public init(dataManager: UpdateReminderDataManagerContract) {
         self.dataManager = dataManager
     }
     
-    public func run(request: UpdateReminderRequest, success: @escaping (UpdateReminderResponse) -> Void, failure:  @escaping (UpdateReminderError) -> Void) {
-        UsecaseQueue.queue.async {
+    public override func run(request: UpdateReminderRequest, success: @escaping (UpdateReminderResponse) -> Void, failure:  @escaping (UpdateReminderError) -> Void) {
+        self.dataManager.updateReminder(username: request.username, reminder: request.reminder, success: {
             [weak self]
-            in
-            self?.dataManager.updateReminder(username: request.username, reminder: request.reminder, success: {
-                [weak self]
-                (reminder) in
-                self?.success(reminder: reminder, callback: success)
-            }, failure: {
-                [weak self]
-                (error) in
-                self?.failure(error: error, callback: failure)
-            })
-        }
+            (reminder) in
+            self?.success(reminder: reminder, callback: success)
+        }, failure: {
+            [weak self]
+            (error) in
+            self?.failure(error: error, callback: failure)
+        })
     }
     
     private func success(reminder: Reminder, callback: @escaping (UpdateReminderResponse) -> Void) {
         let response = UpdateReminderResponse(reminder: reminder)
-        if Thread.isMainThread {
-            callback(response)
-        } else {
-            DispatchQueue.main.async {
-                callback(response)
-            }
-        }
+        invokeSuccess(callback: callback, response: response)
     }
     
     private func failure(error: UpdateReminderError, callback: @escaping (UpdateReminderError) -> Void) {
-        if Thread.isMainThread {
-            callback(error)
-        } else {
-            DispatchQueue.main.async {
-                callback(error)
-            }
-        }
+        invokeFailure(callback: callback, failure: error)
     }
 }

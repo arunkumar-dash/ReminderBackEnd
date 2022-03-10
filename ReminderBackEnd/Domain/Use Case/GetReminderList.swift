@@ -7,78 +7,48 @@
 
 import Foundation
 
-public final class GetReminderListRequest {
+public final class GetReminderListRequest: ZRequest {
     var username: String
     public init(username: String) {
         self.username = username
     }
 }
 
-public final class GetReminderListResponse {
+public final class GetReminderListResponse: ZResponse {
     public var reminders: [Reminder]
     public init(reminders: [Reminder]) {
         self.reminders = reminders
     }
 }
 
-public final class GetReminderListError {
-    public var status: Status
-    
-    public enum Status {
-        case noDatabaseConnection
-        case noDataFound
-    }
-    
-    public init(status: Status) {
-        self.status = status
-    }
+public final class GetReminderListError: ZError {
 }
 
-struct UsecaseQueue {
-    static let queue: DispatchQueue = DispatchQueue(label: Bundle.main.bundleIdentifier!, attributes: .concurrent)
-}
-
-public class GetReminderList {
+public class GetReminderList: ZUsecase<GetReminderListRequest, GetReminderListResponse, GetReminderListError> {
     var dataManager: GetReminderListDataManagerContract
     
     public init(dataManager: GetReminderListDataManagerContract) {
         self.dataManager = dataManager
     }
     
-    public func run(request: GetReminderListRequest, success: @escaping (GetReminderListResponse) -> Void, failure:  @escaping (GetReminderListError) -> Void) {
-        UsecaseQueue.queue.async {
+    public override func run(request: GetReminderListRequest, success: @escaping (GetReminderListResponse) -> Void, failure:  @escaping (GetReminderListError) -> Void) {
+        self.dataManager.getReminderList(username: request.username, success: {
             [weak self]
-            in
-            self?.dataManager.getReminderList(username: request.username, success: {
-                [weak self]
-                (reminders) in
-                self?.success(reminders: reminders, callback: success)
-            }, failure: {
-                [weak self]
-                (error) in
-                self?.failure(error: error, callback: failure)
-            })
-        }
+            (reminders) in
+            self?.success(reminders: reminders, callback: success)
+        }, failure: {
+            [weak self]
+            (error) in
+            self?.failure(error: error, callback: failure)
+        })
     }
     
     private func success(reminders: [Reminder], callback: @escaping (GetReminderListResponse) -> Void) {
         let response = GetReminderListResponse(reminders: reminders)
-        if Thread.isMainThread {
-            callback(response)
-        } else {
-            DispatchQueue.main.async {
-                callback(response)
-            }
-        }
+        invokeSuccess(callback: callback, response: response)
     }
     
     private func failure(error: GetReminderListError, callback: @escaping (GetReminderListError) -> Void) {
-        if Thread.isMainThread {
-            callback(error)
-        } else {
-            DispatchQueue.main.async {
-                callback(error)
-            }
-        }
+        invokeFailure(callback: callback, failure: error)
     }
 }

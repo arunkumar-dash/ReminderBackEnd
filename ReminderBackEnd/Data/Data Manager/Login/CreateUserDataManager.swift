@@ -32,13 +32,13 @@ public class CreateUserDataManager: CreateUserDataManagerContract {
     
     private func failure(message: String, callback: (CreateUserError) -> Void) {
         if message == "No Database Connection" {
-            let error = CreateUserError(status: .noDatabaseConnection)
+            let error = CreateUserError(status: .networkUnavailable)
             callback(error)
         } else if message == "Creation Failed" {
-            let error = CreateUserError(status: .creationFailed)
+            let error = CreateUserError(status: .unknownError)
             callback(error)
         } else if message == "User Already Exists" {
-            let error = CreateUserError(status: .userAlreadyExists)
+            let error = CreateUserError(status: .unknownError)
             callback(error)
         }
     }

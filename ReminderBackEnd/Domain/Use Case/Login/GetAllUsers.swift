@@ -7,72 +7,47 @@
 
 import Foundation
 
-public final class GetAllUsersRequest {
-    public init() {
+public final class GetAllUsersRequest: ZRequest {
+    public override init() {
         
     }
 }
 
-public final class GetAllUsersResponse {
+public final class GetAllUsersResponse: ZResponse {
     public var users: [User]
     public init(users: [User]) {
         self.users = users
     }
 }
 
-public final class GetAllUsersError {
-    public var status: Status
-    
-    public enum Status {
-        case noDatabaseConnection
-        case noUserFound
-    }
-    
-    public init(status: Status) {
-        self.status = status
-    }
+public final class GetAllUsersError: ZError {
 }
 
-public class GetAllUsers {
+public class GetAllUsers: ZUsecase<GetAllUsersRequest, GetAllUsersResponse, GetAllUsersError> {
     var dataManager: GetAllUsersDataManagerContract
     public init(dataManager: GetAllUsersDataManagerContract) {
         self.dataManager = dataManager
     }
     
-    public func run(request: GetAllUsersRequest, success: @escaping (GetAllUsersResponse) -> Void, failure: @escaping (GetAllUsersError) -> Void) {
-        UsecaseQueue.queue.async {
+    public override func run(request: GetAllUsersRequest, success: @escaping (GetAllUsersResponse) -> Void, failure: @escaping (GetAllUsersError) -> Void) {
+        self.dataManager.getAllUsers(success: {
             [weak self]
-            in
-            self?.dataManager.getAllUsers(success: {
-                [weak self]
-                (users) in
-                self?.success(users: users, callback: success)
-            }, failure: {
-                [weak self]
-                (error) in
-                self?.failure(error: error, callback: failure)
-            })
-        }
+            (users) in
+            self?.success(users: users, callback: success)
+        }, failure: {
+            [weak self]
+            (error) in
+            self?.failure(error: error, callback: failure)
+        })
+        
     }
     
     private func success(users: [User], callback: @escaping (GetAllUsersResponse) -> Void) {
         let response = GetAllUsersResponse(users: users)
-        if Thread.isMainThread {
-            callback(response)
-        } else {
-            DispatchQueue.main.async {
-                callback(response)
-            }
-        }
+        invokeSuccess(callback: callback, response: response)
     }
     
     private func failure(error: GetAllUsersError, callback: @escaping (GetAllUsersError) -> Void) {
-        if Thread.isMainThread {
-            callback(error)
-        } else {
-            DispatchQueue.main.async {
-                callback(error)
-            }
-        }
+        invokeFailure(callback: callback, failure: error)
     }
 }

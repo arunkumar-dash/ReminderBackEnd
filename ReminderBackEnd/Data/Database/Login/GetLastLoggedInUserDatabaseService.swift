@@ -11,6 +11,9 @@ public class GetLastLoggedInUserDatabaseService: GetLastLoggedInUserDatabaseCont
     public init() {
         
     }
+    deinit {
+        
+    }
     
     public func getLastLoggedInUser(success: (User) -> Void, failure: (String) -> Void) {
         let constants = Constants()

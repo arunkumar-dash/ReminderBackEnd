@@ -7,73 +7,47 @@
 
 import Foundation
 
-public final class RemoveUserRequest {
+public final class RemoveUserRequest: ZRequest {
     var username: String
     public init(username: String) {
         self.username = username
     }
 }
 
-public final class RemoveUserResponse {
+public final class RemoveUserResponse: ZResponse {
     public var username: String
     public init(username: String) {
         self.username = username
     }
 }
 
-public final class RemoveUserError {
-    public var status: Status
-    
-    public enum Status {
-        case noDatabaseConnection
-        case deletionFailed
-    }
-    
-    public init(status: Status) {
-        self.status = status
-    }
+public final class RemoveUserError: ZError {
 }
 
-public class RemoveUser {
+public class RemoveUser: ZUsecase<RemoveUserRequest, RemoveUserResponse, RemoveUserError> {
     var dataManager: RemoveUserDataManagerContract
     public init(dataManager: RemoveUserDataManagerContract) {
         self.dataManager = dataManager
     }
     
-    public func run(request: RemoveUserRequest, success: @escaping (RemoveUserResponse) -> Void, failure: @escaping (RemoveUserError) -> Void) {
-        UsecaseQueue.queue.async {
+    public override func run(request: RemoveUserRequest, success: @escaping (RemoveUserResponse) -> Void, failure: @escaping (RemoveUserError) -> Void) {
+        dataManager.removeUser(username: request.username, success: {
             [weak self]
-            in
-            self?.dataManager.removeUser(username: request.username, success: {
-                [weak self]
-                (username) in
-                self?.success(username: username, callback: success)
-            }, failure: {
-                [weak self]
-                (error) in
-                self?.failure(error: error, callback: failure)
-            })
-        }
+            (username) in
+            self?.success(username: username, callback: success)
+        }, failure: {
+            [weak self]
+            (error) in
+            self?.failure(error: error, callback: failure)
+        })
     }
     
     private func success(username: String, callback: @escaping (RemoveUserResponse) -> Void) {
         let response = RemoveUserResponse(username: username)
-        if Thread.isMainThread {
-            callback(response)
-        } else {
-            DispatchQueue.main.async {
-                callback(response)
-            }
-        }
+        invokeSuccess(callback: callback, response: response)
     }
     
     private func failure(error: RemoveUserError, callback: @escaping (RemoveUserError) -> Void) {
-        if Thread.isMainThread {
-            callback(error)
-        } else {
-            DispatchQueue.main.async {
-                callback(error)
-            }
-        }
+        invokeFailure(callback: callback, failure: error)
     }
 }

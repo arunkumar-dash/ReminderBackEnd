@@ -32,13 +32,13 @@ public class DeleteReminderDataManager: DeleteReminderDataManagerContract {
     
     private func failure(message: String, callback: (DeleteReminderError) -> Void) {
         if message == "Deletion Failed" {
-            let error = DeleteReminderError(status: .deletionFailed)
+            let error = DeleteReminderError(status: .unknownError)
             callback(error)
         } else if message == "Invalid Data" {
-            let error = DeleteReminderError(status: .invalidData)
+            let error = DeleteReminderError(status: .unknownError)
             callback(error)
         } else if message == "No Database Connection" {
-            let error = DeleteReminderError(status: .noDatabaseConnection)
+            let error = DeleteReminderError(status: .networkUnavailable)
             callback(error)
         }
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class DeleteReminderRequest {
+public final class DeleteReminderRequest: ZRequest {
     var username: String
     var reminder: Reminder
     public init(username: String, reminder: Reminder) {
@@ -16,68 +16,43 @@ public final class DeleteReminderRequest {
     }
 }
 
-public final class DeleteReminderResponse {
+public final class DeleteReminderResponse: ZResponse {
     public var reminder: Reminder
     public init(reminder: Reminder) {
         self.reminder = reminder
     }
 }
 
-public final class DeleteReminderError {
-    public var status: Status
-    
-    public enum Status {
-        case noDatabaseConnection
-        case deletionFailed
-        case invalidData
-    }
-    
-    public init(status: Status) {
-        self.status = status
-    }
+public final class DeleteReminderError: ZError {
 }
 
-public class DeleteReminder {
+public class DeleteReminder: ZUsecase<DeleteReminderRequest, DeleteReminderResponse, DeleteReminderError> {
     var dataManager: DeleteReminderDataManagerContract
     
     public init(dataManager: DeleteReminderDataManagerContract) {
         self.dataManager = dataManager
     }
     
-    public func run(request: DeleteReminderRequest, success: @escaping (DeleteReminderResponse) -> Void, failure: @escaping (DeleteReminderError) -> Void) {
-        UsecaseQueue.queue.async {
+    public override func run(request: DeleteReminderRequest, success: @escaping (DeleteReminderResponse) -> Void, failure: @escaping (DeleteReminderError) -> Void) {
+        
+        self.dataManager.deleteReminder(username: request.username, reminder: request.reminder, success: {
             [weak self]
-            in
-            self?.dataManager.deleteReminder(username: request.username, reminder: request.reminder, success: {
-                [weak self]
-                (reminder) in
-                self?.success(reminder: reminder, callback: success)
-            }, failure: {
-                [weak self]
-                (error) in
-                self?.failure(error: error, callback: failure)
-            })
-        }
+            (reminder) in
+            self?.success(reminder: reminder, callback: success)
+        }, failure: {
+            [weak self]
+            (error) in
+            self?.failure(error: error, callback: failure)
+        })
     }
     
     private func success(reminder: Reminder, callback: @escaping (DeleteReminderResponse) -> Void) {
         let response = DeleteReminderResponse(reminder: reminder)
-        if Thread.isMainThread {
-            callback(response)
-        } else {
-            DispatchQueue.main.async {
-                callback(response)
-            }
-        }
+        
+        invokeSuccess(callback: callback, response: response)
     }
     
     private func failure(error: DeleteReminderError, callback: @escaping (DeleteReminderError) -> Void) {
-        if Thread.isMainThread {
-            callback(error)
-        } else {
-            DispatchQueue.main.async {
-                callback(error)
-            }
-        }
+        invokeFailure(callback: callback, failure: error)
     }
 }

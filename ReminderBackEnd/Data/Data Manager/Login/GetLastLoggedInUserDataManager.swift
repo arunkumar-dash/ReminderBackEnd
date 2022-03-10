@@ -14,6 +14,10 @@ public class GetLastLoggedInUserDataManager: GetLastLoggedInUserDataManagerContr
         self.database = database
     }
     
+    deinit {
+        
+    }
+    
     public func getLastLoggedInUser(success: (User) -> Void, failure: (GetLastLoggedInUserError) -> Void) {
         database.getLastLoggedInUser(success: {
             [weak self]
@@ -32,10 +36,10 @@ public class GetLastLoggedInUserDataManager: GetLastLoggedInUserDataManagerContr
     
     private func failure(message: String, callback: (GetLastLoggedInUserError) -> Void) {
         if message == "No Database Connection" {
-            let error = GetLastLoggedInUserError(status: .noDatabaseConnection)
+            let error = GetLastLoggedInUserError(status: .networkUnavailable)
             callback(error)
         } else if message == "No User Found" {
-            let error = GetLastLoggedInUserError(status: .noUserFound)
+            let error = GetLastLoggedInUserError(status: .unknownError)
             callback(error)
         }
     }
