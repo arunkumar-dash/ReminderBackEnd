@@ -28,6 +28,8 @@ public class GetLastLoggedInUser: ZUsecase<GetLastLoggedInUserRequest, GetLastLo
     public init(dataManager: GetLastLoggedInUserDataManagerContract) {
         self.dataManager = dataManager
     }
+    deinit {
+    }
     
     public override func run(request: GetLastLoggedInUserRequest, success: @escaping (GetLastLoggedInUserResponse) -> Void, failure: @escaping (GetLastLoggedInUserError) -> Void) {
         

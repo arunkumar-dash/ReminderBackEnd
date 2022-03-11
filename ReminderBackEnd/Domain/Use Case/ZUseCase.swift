@@ -67,7 +67,7 @@ struct UsecaseQueue {
 
 open class ZUsecase<CustomRequest: Request, CustomResponse: Response, CustomError: ZError>: NSObject {
     
-    public final func execute(request: CustomRequest, onSuccess success: @escaping (_ response: CustomResponse) -> Void = { _ in } , onFailure failure: @escaping (_ error: CustomError) -> Void = { _ in } ) {
+    public final func execute(request: CustomRequest, onSuccess success: @escaping (_ response: CustomResponse) -> Void = { _ in }, onFailure failure: @escaping (_ error: CustomError) -> Void = { _ in } ) {
         UsecaseQueue.queue.async { [weak self] in
             self?.run(request: request, success: success, failure: failure)
         }
@@ -77,7 +77,7 @@ open class ZUsecase<CustomRequest: Request, CustomResponse: Response, CustomErro
         
     }
     
-    public final func invokeSuccess(callback:@escaping (_ response: CustomResponse) -> Void, response: CustomResponse) {
+    public final func invokeSuccess(callback: @escaping (_ response: CustomResponse) -> Void, response: CustomResponse) {
         if Thread.isMainThread {
             callback(response)
         } else {
@@ -88,7 +88,7 @@ open class ZUsecase<CustomRequest: Request, CustomResponse: Response, CustomErro
         
     }
     
-    public final func invokeFailure(callback:@escaping (_ failure: CustomError) -> Void, failure: CustomError) {
+    public final func invokeFailure(callback: @escaping (_ failure: CustomError) -> Void, failure: CustomError) {
         if Thread.isMainThread {
             callback(failure)
         } else {
