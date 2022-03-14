@@ -15,7 +15,6 @@ public class GetReminderListDataManager: GetReminderListDataManagerContract {
     }
     
     public func getReminderList(username: String, success: ([Reminder]) -> Void, failure: (GetReminderListError) -> Void) {
-        // fetch from db, if success, call success, else call failure
         database.getReminderList(username: username, success: {
             [weak self]
             (reminders) in
