@@ -12,9 +12,8 @@ class UserDatabase {
     static var database: SQLite?
     
     init() {
-        while connect() == false {
-            print("Reconnecting to DB...")
-            sleep(1)
+        if connect() == false {
+            print("Failed to connect to database")
         }
     }
     

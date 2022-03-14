@@ -32,7 +32,6 @@ public class GetLastLoggedInUser: ZUsecase<GetLastLoggedInUserRequest, GetLastLo
     }
     
     public override func run(request: GetLastLoggedInUserRequest, success: @escaping (GetLastLoggedInUserResponse) -> Void, failure: @escaping (GetLastLoggedInUserError) -> Void) {
-        
         self.dataManager.getLastLoggedInUser(success: {
             [weak self]
             (user) in

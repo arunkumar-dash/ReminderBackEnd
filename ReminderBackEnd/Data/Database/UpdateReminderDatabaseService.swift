@@ -14,17 +14,14 @@ public class UpdateReminderDatabaseService: UpdateReminderDatabaseContract {
     
     public func updateReminder(username: String, reminder: Reminder, success: (Reminder) -> Void, failure: (String) -> Void) {
         let reminderDatabase = ReminderDatabase(for: username)
-        var failureMessage = ""
         if let id = reminder.id {
             if reminderDatabase.update(id: id, element: reminder) {
                 success(reminder)
             } else {
-                failureMessage = "Updation Failed"
-                failure(failureMessage)
+                failure("Updation Failed")
             }
         } else {
-            failureMessage = "Invalid Data"
-            failure(failureMessage)
+            failure("Invalid Data")
         }
     }
 }

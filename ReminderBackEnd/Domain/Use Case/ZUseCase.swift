@@ -81,9 +81,9 @@ open class ZUsecase<CustomRequest: Request, CustomResponse: Response, CustomErro
         if Thread.isMainThread {
             callback(response)
         } else {
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 callback(response)
-            })
+            }
         }
         
     }

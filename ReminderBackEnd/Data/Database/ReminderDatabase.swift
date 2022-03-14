@@ -217,8 +217,8 @@ class ReminderDatabase {
     init(for username: String) {
         self.idGenerator = 1
         self.username = username
-        while connect() == false {
-            sleep(1)
+        if connect() == false {
+            print("Failed to connect to database")
         }
     }
     

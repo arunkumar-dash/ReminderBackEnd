@@ -79,16 +79,6 @@
 		1DCD519927DA1EB4001E654C /* ZUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCD519827DA1EB4001E654C /* ZUseCase.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		1DCD51A227DB091E001E654C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1DCD519E27DB091E001E654C /* Reminder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1D648A0C27BF6A0B00A6AC58;
-			remoteInfo = Reminder;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		1D4EFCA727D7271C008742D0 /* ReminderBackEnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReminderBackEnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D4EFCAA27D7271C008742D0 /* ReminderBackEnd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReminderBackEnd.h; sourceTree = "<group>"; };
@@ -161,7 +151,6 @@
 		1D4EFD6727D72822008742D0 /* SetLastLoggedInUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLastLoggedInUser.swift; sourceTree = "<group>"; };
 		1D4EFD6827D72822008742D0 /* DeleteReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteReminder.swift; sourceTree = "<group>"; };
 		1DCD519827DA1EB4001E654C /* ZUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZUseCase.swift; sourceTree = "<group>"; };
-		1DCD519E27DB091E001E654C /* Reminder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Reminder.xcodeproj; path = ../../../../../../Downloads/Reminder.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,7 +272,6 @@
 		1D4EFCD627D7272E008742D0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				1DCD519E27DB091E001E654C /* Reminder.xcodeproj */,
 				1D4EFCD727D7272E008742D0 /* GetLastLoggedInUserDataManager.swift */,
 				1D4EFCD827D7272E008742D0 /* GetAllUsersDataManager.swift */,
 				1D4EFCD927D7272E008742D0 /* CreateUserDataManager.swift */,
@@ -373,14 +361,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		1DCD519F27DB091E001E654C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1DCD51A327DB091E001E654C /* Reminder.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -438,28 +418,12 @@
 			mainGroup = 1D4EFC9D27D7271C008742D0;
 			productRefGroup = 1D4EFCA827D7271C008742D0 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1DCD519F27DB091E001E654C /* Products */;
-					ProjectRef = 1DCD519E27DB091E001E654C /* Reminder.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1D4EFCA627D7271C008742D0 /* ReminderBackEnd */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		1DCD51A327DB091E001E654C /* Reminder.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Reminder.app;
-			remoteRef = 1DCD51A227DB091E001E654C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D4EFCA527D7271C008742D0 /* Resources */ = {
